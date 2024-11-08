@@ -1,5 +1,3 @@
----
-
 # Lab 4: Configuring Docker Build Agent Templates in Jenkins
 
 In this lab, you'll set up and configure Docker Build Agent templates within Jenkins. Docker Build Agents allow Jenkins to use customized Docker container images as build agents, tailored to specific project requirements. You'll explore various settings for configuring these agents, including specifying Docker images, container capacity, labels, and connection methods.

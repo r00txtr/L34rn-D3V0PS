@@ -1,7 +1,3 @@
-Here's **Lab 10: Trufflehog and SpotBugs Integration for Security and Analysis**:
-
----
-
 # Lab 10: Trufflehog for Secret Scanning, SpotBugs, and SonarQube Integration
 
 In this lab, you will integrate Trufflehog for secret scanning, SpotBugs for static code analysis, and SonarQube for comprehensive code review within the Jenkins pipeline. These tools are vital for enhancing the security and quality of your CI/CD pipeline.
