@@ -39,13 +39,6 @@ On success, there will be two uploads (building upon Lab 12).
 pipeline {
     agent any
     stages {
-        stage('Check Node') {
-            steps {
-                script {
-                    echo "Running on: ${env.NODE_NAME}"
-                }
-            }
-        }
         stage('Maven Compile and SAST') {
             agent {
                 docker {
@@ -54,12 +47,19 @@ pipeline {
                 }
             }
             steps {
+                echo 'Running Maven compile and SpotBugs analysis...'
                 sh 'mvn clean compile spotbugs:spotbugs'
-                archiveArtifacts artifacts: 'target/site/spotbugs.html'
-                archiveArtifacts artifacts: 'target/spotbugsXml.xml'
+                sh 'pwd'
+                sh 'ls -la'
+                sh 'cp target/spotbugsXml.xml ./spotbugsXml.xml'
+                sh 'cp target/site/spotbugs.html ./spotbugs.html'
+                archiveArtifacts artifacts: 'spotbugs.html'
+                archiveArtifacts artifacts: 'spotbugsXml.xml'
+                
             }
         }
-        stage('SCA') {
+        
+        stage('Dependency Check SCA') {
             agent {
                 docker {
                     image 'owasp/dependency-check:latest'
@@ -67,13 +67,15 @@ pipeline {
                 }
             }
             steps {
+                echo 'Running OWASP Dependency Check...'
                 sh '/usr/share/dependency-check/bin/dependency-check.sh --scan . --project "VulnerableJavaWebApplication" --format HTML --format XML --format JSON'
                 archiveArtifacts artifacts: 'dependency-check-report.html'
                 archiveArtifacts artifacts: 'dependency-check-report.json'
                 archiveArtifacts artifacts: 'dependency-check-report.xml'
             }
         }
-        stage('Secret Scanning') {
+        
+        stage('TruffleHog Secret Scanning') {
             agent {
                 docker {
                     image 'trufflesecurity/trufflehog:latest'
@@ -81,10 +83,12 @@ pipeline {
                 }
             }
             steps {
+                echo 'Running TruffleHog for secret scanning...'
                 sh 'trufflehog --no-update filesystem . --json > trufflehogscan.json'
                 archiveArtifacts artifacts: 'trufflehogscan.json'
             }
         }
+        
         stage('Build Docker Image') {
             agent {
                 docker {
@@ -93,10 +97,12 @@ pipeline {
                 }
             }
             steps {
+                echo 'Building Docker image...'
                 sh 'docker rmi java-vulnerable-application:0.1 || true'
                 sh 'docker build -t java-vulnerable-application:0.1 .'
             }
         }
+        
         stage('Run Docker Image') {
             agent {
                 docker {
@@ -105,12 +111,13 @@ pipeline {
                 }
             }
             steps {
+                echo 'Starting Docker container...'
                 sh 'docker rm -f vulnerable-java-application || true'
                 sh 'docker run --name vulnerable-java-application -p 9000:9000 -d java-vulnerable-application:0.1'
             }
         }
 
-        stage('DAST') {
+        stage('Dynamic Analysis (DAST) with ZAP') {
             agent {
                 docker {
                     image 'ghcr.io/zaproxy/zaproxy:stable'
@@ -118,6 +125,7 @@ pipeline {
                 }
             }
             steps {
+                 echo 'Running ZAP DAST scan...'
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                     sh 'zap-full-scan.py -t https://172.18.0.3:9000 -r result-zap-full.html -x result-zap-full.xml'
                 }
@@ -131,11 +139,10 @@ pipeline {
     }
     post {
         always {
-            node ('Built-In')
-            sh 'curl -X POST https://demo.defectdojo.org/api/v2/import-scan/ -H "Authorization: Token d790edd5ce89395b4464647950c61d368d150b43" -F "scan_type=Trufflehog Scan" -F "file=@./trufflehogscan.json;type=application/json" -F "engagement=17"'
-            sh 'curl -X POST https://demo.defectdojo.org/api/v2/import-scan/ -H "Authorization: Token d790edd5ce89395b4464647950c61d368d150b43" -F "scan_type=Dependency Check Scan" -F "file=@./dependency-check-report.xml;type=text/xml" -F "engagement=17"'
-            sh 'curl -X POST https://demo.defectdojo.org/api/v2/import-scan/ -H "Authorization: Token d790edd5ce89395b4464647950c61d368d150b43" -F "scan_type=Spotbugs Scan" -F "file=@./spotbugsXml.xml;type=text/xml" -F "engagement=17"'
-            sh 'curl -X POST https://demo.defectdojo.org/api/v2/import-scan/ -H "Authorization: Token d790edd5ce89395b4464647950c61d368d150b43" -F "scan_type=ZAP Scan" -F "file=@./result-zap-full.xml;type=text/xml" -F "engagement=17"'
+            sh 'curl -X POST https://demo.defectdojo.org/api/v2/import-scan/ -H "Authorization: Token 548afd6fab3bea9794a41b31da0e9404f733e222" -F "scan_type=Trufflehog Scan" -F "file=@./trufflehogscan.json;type=application/json" -F "engagement=25"'
+            sh 'curl -X POST https://demo.defectdojo.org/api/v2/import-scan/ -H "Authorization: Token 548afd6fab3bea9794a41b31da0e9404f733e222" -F "scan_type=Dependency Check Scan" -F "file=@./dependency-check-report.xml;type=text/xml" -F "engagement=25"'
+            sh 'curl -X POST https://demo.defectdojo.org/api/v2/import-scan/ -H "Authorization: Token 548afd6fab3bea9794a41b31da0e9404f733e222" -F "scan_type=SpotBugs Scan" -F "file=@./target/spotbugsXml.xml;type=text/xml" -F "engagement=25"'
+            sh 'curl -X POST https://demo.defectdojo.org/api/v2/import-scan/ -H "Authorization: Token 548afd6fab3bea9794a41b31da0e9404f733e222" -F "scan_type=ZAP Scan" -F "file=@./result-zap-full.xml;type=text/xml" -F "engagement=25"'
         }
     }
 }
