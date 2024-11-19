@@ -3,6 +3,7 @@
 In this lab, we will learn how to configure a Kubernetes cluster using **K3D**, a lightweight wrapper around **K3s**, designed for running Kubernetes clusters in Docker. K3D simplifies setting up Kubernetes clusters on your local machine, making it an excellent tool for development, testing, and learning purposes.
 
 By the end of this lab, you will:
+
 1. Set up Docker on your machine.
 2. Install K3D to create a Kubernetes cluster.
 3. Use `kubectl` to interact with the cluster.
@@ -13,6 +14,7 @@ This guide is written in a beginner-friendly tone, with examples and clear expla
 ---
 
 ## Table of Contents
+
 1. **Introduction to K3D**
 2. **Step-by-Step Instructions**
     1. Install Docker on Ubuntu
@@ -119,6 +121,7 @@ k3d cluster create -s 1 -a 3 --volume /data:/data
 ```
 
 Explanation:
+
 - **`-s 1`**: Creates one server node (the control plane).
 - **`-a 3`**: Adds three agent (worker) nodes.
 - **`--volume /data:/data`**: Mounts the local `/data` directory into the cluster.
@@ -191,6 +194,7 @@ This will display any system pods running on your cluster, ensuring the cluster 
 ## Conclusion
 
 In this lab, you learned how to set up a Kubernetes cluster using K3D on your local machine. You now know how to:
+
 1. Install Docker as a prerequisite for K3D.
 2. Set up and run a Kubernetes cluster with K3D.
 3. Use `kubectl` to interact with your Kubernetes cluster.

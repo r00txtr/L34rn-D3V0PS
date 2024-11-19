@@ -3,6 +3,7 @@
 In this lab, we will walk through the basics of working with **Pods** in Kubernetes, which are the smallest deployable units in Kubernetes. We will cover how to create a simple pod, edit an existing pod, delete a pod, and use labels to categorize and filter pods.
 
 By the end of this lab, you will:
+
 1. Create a simple pod from a YAML file.
 2. Edit a pod to update its configuration.
 3. Delete a pod using different methods.
@@ -13,6 +14,7 @@ Let’s dive in!
 ---
 
 ## Table of Contents
+
 1. **Introduction to Pods**
 2. **Step-by-Step Instructions**
     1. Create a Simple Pod
@@ -61,6 +63,7 @@ spec:
 ```
 
 Explanation:
+
 - **apiVersion**: The Kubernetes API version to use (v1 for core resources like Pods).
 - **kind**: The type of Kubernetes object (Pod).
 - **metadata**: Includes information like the pod’s name (`simple-pod`).
@@ -206,6 +209,7 @@ spec:
 ```
 
 Explanation:
+
 - We define three pods: `nginx-pod-1`, `apache-pod-2`, and `db-pod-1`.
 - Each pod has labels: `app` and `environment`. These labels help categorize the pods (e.g., for selecting based on environment: `inter` or `local`).
 
@@ -250,6 +254,7 @@ kubectl get pods -l environment=local
 ## Verification
 
 To ensure that the lab was completed successfully, verify the following:
+
 1. **Simple Pod**: The pod should be created, edited, and deleted successfully.
 2. **Labeled Pods**: You should be able to filter and modify pods based on their labels.
 
@@ -258,6 +263,7 @@ To ensure that the lab was completed successfully, verify the following:
 ## Conclusion
 
 In this lab, you learned how to:
+
 1. Create a simple pod using YAML.
 2. Edit an existing pod and update its image.
 3. Delete a pod using `kubectl`.
