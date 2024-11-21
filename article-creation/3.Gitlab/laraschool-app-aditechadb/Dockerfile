@@ -7,12 +7,12 @@ RUN apt-get update && apt-get install -y \
 		git \
 		libpng-dev \
 		libfreetype6-dev \
-                libjpeg62-turbo-dev \
+        libjpeg62-turbo-dev \
 		libonig-dev \
-	&& docker-php-ext-install -j$(nproc) iconv \
+	    && docker-php-ext-install -j$(nproc) iconv \
     	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
     	&& docker-php-ext-install -j$(nproc) gd
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*	
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl gd
 
 #Config Kecil
