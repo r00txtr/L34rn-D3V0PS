@@ -63,7 +63,7 @@ In this lab, we will deploy a Laravel application using Docker. You will use a c
 
     ```Dockerfile
     # Use PHP 7.2 as a base image
-    FROM php:7.2-fpm
+    FROM php:8.2-fpm
 
     # Set working directory
     WORKDIR /var/www
@@ -194,8 +194,8 @@ In this lab, we will deploy a Laravel application using Docker. You will use a c
         environment:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: perpusku_gc
-          MYSQL_USER: root
-          MYSQL_PASSWORD: root
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: admin
         ports:
           - "3306:3306"
         volumes:
