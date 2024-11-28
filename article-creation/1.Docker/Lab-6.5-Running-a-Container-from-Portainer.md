@@ -1,10 +1,11 @@
-# Lab 7.5: Running a Container from Portainer
+# Lab 6.5: Running a Container from Portainer
 
 In this lab, you will learn how to run a container using the **Portainer** web interface. Portainer provides a graphical way to manage your Docker containers, making it easy for you to deploy, inspect, and monitor containers without needing to use the command line. By the end of this lab, you will have successfully launched an Nginx container from the Portainer dashboard and verified that it is running correctly.
 
 ---
 
 ## Table of Contents
+
 1. **Introduction**
 2. **Step-by-Step Instructions**
     1. Accessing the Portainer Dashboard

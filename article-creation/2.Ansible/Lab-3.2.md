@@ -5,6 +5,7 @@ In this lab, you will learn how to install and configure **Ansible** on a contro
 ---
 
 ## Table of Contents
+
 1. **Introduction**
 2. **Step-by-Step Instructions**
     1. Installing Ansible

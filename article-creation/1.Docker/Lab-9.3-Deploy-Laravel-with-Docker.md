@@ -3,6 +3,7 @@
 In this lab, you will deploy a Laravel application using Docker. You will create a custom Docker image for the Laravel app, set up a MySQL database container, and run both containers using Docker Compose.
 
 By the end of this lab, you will:
+
 1. Clone a Laravel application from a Git repository.
 2. Create a custom Docker image for the Laravel application.
 3. Set up and configure a MySQL database container.
@@ -11,6 +12,7 @@ By the end of this lab, you will:
 ---
 
 ## Table of Contents
+
 1. **Introduction**
 2. **Step-by-Step Instructions**
     1. Set Up Directory and Clone Repository
@@ -27,7 +29,8 @@ By the end of this lab, you will:
 
 In this lab, we will deploy a Laravel application using Docker. You will use a custom **Dockerfile** to build a Laravel image and create a containerized environment for both the Laravel application and a **MySQL** database.
 
-### Key Concepts:
+### Key Concepts
+
 - **Docker**: A platform to develop, ship, and run applications in containers.
 - **Laravel**: A popular PHP framework used for building web applications.
 - **MySQL**: An open-source relational database management system.
@@ -65,6 +68,9 @@ In this lab, we will deploy a Laravel application using Docker. You will use a c
     # Set working directory
     WORKDIR /var/www
 
+    # Copy application code
+    COPY . /var/www
+
     # Install system dependencies
     RUN apt-get update && apt-get install -y \
         build-essential \
@@ -84,8 +90,10 @@ In this lab, we will deploy a Laravel application using Docker. You will use a c
     # Install Composer
     COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-    # Copy application code
-    COPY . /var/www
+    # Run composer update
+    RUN composer config --no-plugins allow-plugins.kylekatarnls/update-helper true
+    RUN composer config --no-plugins allow-plugins.symfony/thanks true
+    RUN composer update
 
     # Set correct permissions
     RUN chown -R www-data:www-data /var/www
@@ -129,11 +137,6 @@ In this lab, we will deploy a Laravel application using Docker. You will use a c
         cp .env.example .env
     fi
 
-    # Run composer update
-    composer config --no-plugins allow-plugins.kylekatarnls/update-helper true
-    composer config --no-plugins allow-plugins.symfony/thanks true
-    composer update
-
     # Generate APP_KEY in .env
     php artisan key:generate
 
@@ -141,15 +144,14 @@ In this lab, we will deploy a Laravel application using Docker. You will use a c
     sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=mysql/g' .env
     sed -i 's/DB_HOST=.*/DB_HOST=db/g' .env
     sed -i 's/DB_DATABASE=.*/DB_DATABASE=perpusku_gc/g' .env
-    sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/g' .env
-    sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=root/g' .env
+    sed -i 's/DB_USERNAME=.*/DB_USERNAME=admin/g' .env
+    sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=admin/g' .env
 
     # Run database migrations and seeding
     php artisan migrate --force
     php artisan db:seed --force
 
-    # Start PHP-FPM and Laravel server
-    php-fpm
+    # Start PHP-FPM and Laravel server  
     php artisan serve --host=0.0.0.0 --port=8000
     ```
 
@@ -251,6 +253,7 @@ In this lab, we will deploy a Laravel application using Docker. You will use a c
 ## Conclusion
 
 In this lab, you have successfully:
+
 1. Cloned a Laravel application from a Git repository.
 2. Created a custom Docker image for the Laravel application.
 3. Set up a MySQL database container.

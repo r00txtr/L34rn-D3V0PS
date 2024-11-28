@@ -3,6 +3,7 @@
 In this lab, we will explore Docker’s **host network mode**. Unlike the default bridge network, where each container gets its own network namespace, the **host network** mode allows containers to share the host’s network stack. This can be useful in certain scenarios where network performance is critical, or when a container needs direct access to the host's network interfaces.
 
 By the end of this lab, you will understand how to:
+
 1. Run a Docker container with the host network.
 2. Test and verify network connectivity.
 3. Check the IP address and network ports to see how the host network affects container behavior.
@@ -10,6 +11,7 @@ By the end of this lab, you will understand how to:
 ---
 
 ## Table of Contents
+
 1. **Introduction**
 2. **Running a Container with the Host Network**
 3. **Testing Connectivity to the Host**
@@ -21,6 +23,7 @@ By the end of this lab, you will understand how to:
 ## Introduction
 
 The **host network** mode in Docker allows a container to share the same network namespace as the host. This means that the container does not get its own IP address or separate network interface. Instead, it uses the host's network interfaces directly. In practice, this means:
+
 - The container will have the same IP address as the host.
 - The container can use the same ports as the host, with no need for port mapping.
 
@@ -43,6 +46,7 @@ docker run -itd --network host --name my_nginx nginx
 ```
 
 Let’s break down this command:
+
 - `-itd`: Runs the container in interactive, detached mode (in the background).
 - `--network host`: Uses the host network mode, meaning the container will share the host’s network stack.
 - `--name my_nginx`: Names the container `my_nginx`.
@@ -128,11 +132,13 @@ Here, `12345` is the process ID (PID) of the Nginx process running inside the co
 ## Conclusion
 
 In this lab, you have learned how to:
+
 1. Run a Docker container using the **host network** mode, which allows the container to share the host’s network stack.
 2. Test connectivity to the container by accessing the Nginx server using `localhost`.
 3. Verify network behavior by checking the IP address and port bindings on the host.
 
-### Key Takeaways:
+### Key Takeaways
+
 - The **host network** mode is useful for applications that require high network performance or direct access to the host’s network interfaces.
 - Containers running in the host network do not have their own IP addresses and instead share the host’s IP address.
 - The container can bind directly to ports on the host, without needing port mapping.

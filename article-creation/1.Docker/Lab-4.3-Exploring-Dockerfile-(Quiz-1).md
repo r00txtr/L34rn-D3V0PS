@@ -1,4 +1,4 @@
-# Lab 4.3: Exploring Dockerfile (Quiz)
+# Lab 4.3: Exploring Dockerfile (Quiz 1)
 
 In this lab, we will create and run a Docker container for a web application using Nginx. The challenge involves building a Dockerfile and image, running the container, and ensuring the correct web page is served. This exercise will test your understanding of Dockerfiles, Docker images, and containers.
 

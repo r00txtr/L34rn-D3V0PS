@@ -3,6 +3,7 @@
 In this lab, we will explore **Docker Compose**, a tool that simplifies the process of running multi-container Docker applications. You can use Docker Compose to define and manage services, networks, and volumes with a single command by writing everything into a YAML file. In this lab, we will set up a **WordPress** site with a **MySQL** database using Docker Compose.
 
 By the end of this lab, you will:
+
 1. Install Docker Compose.
 2. Create a Docker Compose configuration for WordPress and MySQL.
 3. Run the application using Docker Compose.
@@ -11,6 +12,7 @@ By the end of this lab, you will:
 ---
 
 ## Table of Contents
+
 1. **Introduction**
 2. **Installing Docker Compose**
 3. **Creating a WordPress and MySQL Setup with Docker Compose**
@@ -46,6 +48,7 @@ sudo chmod 755 $DESTINATION
 ```
 
 This command:
+
 - Fetches the latest version of Docker Compose.
 - Downloads it to `/usr/bin/docker-compose`.
 - Sets the correct permissions to make it executable.
@@ -122,6 +125,7 @@ volumes:
 ```
 
 #### Explanation:
+
 - **db**: This service uses the MySQL image. It mounts a volume named `dbdata` to store the MySQL database and sets the root password, database name, user, and password.
 - **wordpress**: This service uses the latest WordPress image and links to the MySQL database (`db`). It maps port 80 inside the container to port 8000 on the host.
 - **volumes**: The `dbdata` volume is used to persist MySQL data across container restarts.
@@ -178,6 +182,7 @@ If everything is set up correctly, you will see the WordPress installation page,
 ## Conclusion
 
 In this lab, you have learned how to:
+
 1. Install **Docker Compose** on multiple nodes.
 2. Define a multi-container application using a `docker-compose.yml` file.
 3. Run a **WordPress** site backed by a **MySQL** database using Docker Compose.

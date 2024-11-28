@@ -6,7 +6,8 @@ This guide assumes you have Docker installed and are running these commands on a
 
 ---
 
-## Table of Contents:
+## Table of Contents
+
 1. **Introduction**
 2. **Working with Redis Docker Image**
     1. Search Redis Image
@@ -23,6 +24,7 @@ This guide assumes you have Docker installed and are running these commands on a
 ## Introduction
 
 In this lab, we will cover two Docker use cases:
+
 1. Running a **Redis** container: Redis is an in-memory data structure store, often used as a database, cache, and message broker.
 2. Running an **Nginx** container: Nginx is a popular web server often used for reverse proxying, caching, and load balancing.
 
@@ -93,7 +95,9 @@ To see all running containers:
 ```bash
 docker ps
 ```
+
 or
+
 ```bash
 docker container ls
 ```
@@ -105,7 +109,9 @@ To list all containers, whether active or stopped:
 ```bash
 docker ps -a
 ```
+
 or
+
 ```bash
 docker container ls -a
 ```
@@ -181,6 +187,7 @@ docker run -d --name nginx1 -p 80:80 nginx:latest
 ```
 
 This command:
+
 - Runs the Nginx container in detached mode (`-d`).
 - Exposes container’s port `80` to the host’s port `80`.
 - Names the container `nginx1`.
@@ -239,10 +246,10 @@ docker images
 
 To ensure everything is working correctly, perform the following checks:
 
-1. **Access Nginx with curl**: 
+1. **Access Nginx with curl**:
    - You should be able to access the Nginx containers `nginx1` and `nginx2` using `curl` and verify they are serving responses correctly.
-   
-2. **Redis Container Running**: 
+
+2. **Redis Container Running**:
    - Ensure that the Redis container (`redis1`) is up and running by checking it with `docker ps` or inspecting logs with `docker logs redis1`.
 
 ---

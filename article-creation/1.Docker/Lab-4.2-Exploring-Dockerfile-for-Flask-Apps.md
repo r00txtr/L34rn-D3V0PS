@@ -1,6 +1,7 @@
 # Lab 4.2: Exploring Dockerfile for Flask Apps
 
 In this lab, we will create a simple Flask application, containerize it using Docker, and upload the image to DockerHub. Flask is a lightweight Python web framework that is commonly used to build simple web applications. By the end of this lab, you will know how to:
+
 1. Create a basic Flask application.
 2. Write a Dockerfile to containerize the Flask app.
 3. Push the Docker image to DockerHub.
@@ -9,6 +10,7 @@ In this lab, we will create a simple Flask application, containerize it using Do
 ---
 
 ## Table of Contents
+
 1. **Introduction**
 2. **Step-by-Step Instructions**
     1. Setting Up the Environment
@@ -24,6 +26,7 @@ In this lab, we will create a simple Flask application, containerize it using Do
 ## Introduction
 
 In this lab, we will create a simple Flask web application and use Docker to run it inside a container. Flask will serve a basic web page, and you will learn how to:
+
 - Write a **Dockerfile** to define how Docker should build the image.
 - Build and tag the Docker image.
 - Push the image to **DockerHub** so it can be shared with others.
@@ -158,6 +161,7 @@ CMD ["app.py"]
 ```
 
 Let’s break down this Dockerfile:
+
 - `FROM ubuntu:16.04`: Uses the Ubuntu 16.04 image as the base image.
 - `RUN mkdir /app`: Creates a directory named `/app` inside the container to hold the application files.
 - `RUN apt-get install`: Installs Python and pip, which are needed to run the Flask application.
@@ -237,6 +241,7 @@ Hey, we have Flask in a Docker container!
 ## Verification
 
 To ensure that the lab is completed successfully, check the following:
+
 1. The **`flask-latihan03`** image is built and tagged with your DockerHub username.
 2. The image is successfully pushed to DockerHub.
 3. The Flask application is running inside the container and responds correctly when accessed via `curl` on port 5000.
@@ -246,6 +251,7 @@ To ensure that the lab is completed successfully, check the following:
 ## Conclusion
 
 In this lab, you learned how to:
+
 1. Build a simple Flask application and containerize it using Docker.
 2. Write a **Dockerfile** that installs dependencies and runs the application.
 3. Tag and push the Docker image to **DockerHub** for sharing.

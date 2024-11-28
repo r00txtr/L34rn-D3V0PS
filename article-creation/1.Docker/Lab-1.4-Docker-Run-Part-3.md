@@ -5,6 +5,7 @@ In this lab, we will continue to explore more advanced Docker functionalities, i
 ---
 
 ## Table of Contents
+
 1. **Introduction**
 2. **Running MySQL and phpMyAdmin Containers (Practice 05)**
     1. Run MySQL Container
@@ -40,6 +41,7 @@ docker run -d --name my-mysql -e MYSQL_ROOT_PASSWORD=RAHASIA -e MYSQL_DATABASE=l
 ```
 
 This command does the following:
+
 - `-d`: Runs the container in detached mode (in the background).
 - `--name my-mysql`: Names the container `my-mysql`.
 - `-e MYSQL_ROOT_PASSWORD=RAHASIA`: Sets the root password to `RAHASIA`.
@@ -73,6 +75,7 @@ http://10.10.10.11:8090 (Your-Local-IP)
 ```
 
 Log in using:
+
 - **Username**: `root`
 - **Password**: `RAHASIA`
 
@@ -94,6 +97,7 @@ docker run -dit --name ubuntu2 ubuntu
 ```
 
 This command:
+
 - `-dit`: Runs the container in detached, interactive, and terminal modes.
 - `--name`: Assigns names to the containers (`ubuntu1` and `ubuntu2`).
 
@@ -162,6 +166,7 @@ docker container run -d --name ch6_mariadb --memory 256m --cpu-shares 1024 --cap
 ```
 
 This command:
+
 - Limits the container to 256MB of memory (`--memory 256m`).
 - Assigns a CPU priority using `--cpu-shares 1024`.
 - Drops the `net_raw` capability to restrict the container's network capabilities.
@@ -177,6 +182,7 @@ mwar8205/wordpress:5.0.0-php7.2-apache
 ```
 
 This WordPress container:
+
 - Is limited to 512MB of memory.
 - Has a lower CPU priority than the MariaDB container (`--cpu-shares 512`).
 - Is linked to the `ch6_mariadb` container using `--link ch6_mariadb:mysql`.

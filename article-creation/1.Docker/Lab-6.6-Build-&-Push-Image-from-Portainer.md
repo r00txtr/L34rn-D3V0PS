@@ -5,6 +5,7 @@ In this lab, you will learn how to build and push a Docker image using the **Por
 ---
 
 ## Table of Contents
+
 1. **Introduction**
 2. **Step-by-Step Instructions**
     1. Build a Docker Image from a Dockerfile in Portainer

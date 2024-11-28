@@ -5,6 +5,7 @@ In this guide, we will walk you through the process of installing Docker on a Li
 We will go step by step, explaining each command in detail. Let’s begin!
 
 ## Table of Contents
+
 1. **Step 1: Install Docker**
 2. **Step 2: Display Docker Version**
 3. **Step 3: Display Docker Installation Details**
@@ -17,6 +18,7 @@ We will go step by step, explaining each command in detail. Let’s begin!
 ## Prerequisites
 
 Before we begin, ensure you have:
+
 - A Linux-based system, preferably Ubuntu.
 - Access to terminal or SSH for running commands.
 - Internet connection for downloading necessary packages.
@@ -62,6 +64,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 ```
 
 Here’s a breakdown:
+
 - `docker-ce`: Docker’s Community Edition.
 - `docker-ce-cli`: The command-line interface for Docker.
 - `containerd.io`: A container runtime.
@@ -80,7 +83,8 @@ docker version
 
 This command will show the installed Docker version details like the client and server version.
 
-### Example Output:
+### Example Output
+
 ```
 Client: Docker Engine - Community
  Version: 20.10.8
@@ -98,7 +102,8 @@ docker info
 
 This will display various details, including the number of containers and images, Docker’s storage driver, networking configuration, and more.
 
-### Example Output:
+### Example Output
+
 ```
 Containers: 0
  Images: 0
@@ -144,7 +149,8 @@ docker run hello-world
 
 If Docker is correctly installed, it will download the image from the registry and display a "Hello, World!" message, confirming that Docker is working properly.
 
-### Example Output:
+### Example Output
+
 ```
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
@@ -161,7 +167,8 @@ docker image ls
 
 This will display a list of all Docker images that have been downloaded to your system.
 
-### Example Output:
+### Example Output
+
 ```
 REPOSITORY                           TAG       IMAGE ID       CREATED         SIZE
 hello-world                         latest    123abc456789  2 minutes ago   13.3kB
@@ -177,7 +184,8 @@ docker container ls -a
 
 This will list all Docker containers along with their status (running, stopped, or exited).
 
-### Example Output:
+### Example Output
+
 ```
 CONTAINER ID   IMAGE                           COMMAND   CREATED          STATUS                       PORTS     NAMES
 78cd12345abc   hello-world                     "/hello"   2 minutes ago   Exited (0) 1 minute ago             sleepy_morse
