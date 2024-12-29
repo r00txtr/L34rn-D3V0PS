@@ -117,8 +117,8 @@ services:
      restart: always
      environment:
        WORDPRESS_DB_HOST: db:3306
-       WORDPRESS_DB_USER: root
-       WORDPRESS_DB_PASSWORD: somewordpress
+       WORDPRESS_DB_USER: admin01
+       WORDPRESS_DB_PASSWORD: admin_rahasia
 
 volumes:
     dbdata:
@@ -130,7 +130,7 @@ volumes:
 - **wordpress**: This service uses the latest WordPress image and links to the MySQL database (`db`). It maps port 80 inside the container to port 8000 on the host.
 - **volumes**: The `dbdata` volume is used to persist MySQL data across container restarts.
 
-Replace `[username]` with your Docker username and `[password]` with a secure password of your choice.
+Replace `[username]/WORDPRESS_DB_USER` with your Docker username and `[password]/WORDPRESS_DB_PASSWORD` with a secure password of your choice.
 
 ---
 

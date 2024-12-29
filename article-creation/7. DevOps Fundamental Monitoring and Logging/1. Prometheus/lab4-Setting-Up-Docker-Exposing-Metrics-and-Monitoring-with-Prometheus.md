@@ -1,4 +1,4 @@
-# Lab 4: Setting Up Docker and Monitoring with Prometheus
+# Lab 4: Setting Up Docker, Exposing metrics from docker containers, and Monitoring with Prometheus
 
 In this lab, you will learn how to install Docker, expose its metrics, set up a MySQL container, and integrate Docker and MySQL metrics into Prometheus for monitoring. This guide is designed for beginners, with detailed explanations and examples provided to ensure clarity.
 
@@ -53,7 +53,7 @@ sudo vim /etc/docker/daemon.json
 Edit the Prometheus configuration to include Docker metrics:
 
 ```bash
-sudo vim /opt/prometheus-2.55.1.linux-amd64/config.yml
+sudo vim /opt/prometheus-3.0.1.linux-amd64/config.yml
 ```
 
 **Add the following content to `scrape_configs`:**
@@ -94,6 +94,7 @@ Ensure your user has the appropriate permissions:
 
 ```bash
 sudo usermod -aG docker ${USER}
+sudo chown $USER /var/run/docker.sock
 sudo chmod 666 /var/run/docker.sock
 ```
 

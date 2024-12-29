@@ -1,4 +1,4 @@
-# Lab 10.1: Using Service ClusterIP, NodePort, Deploying Kubernetes Dashboard, and Multi-Tier Application
+# Lab 8.1: Using Service ClusterIP, NodePort, Deploying Kubernetes Dashboard, and Multi-Tier Application
 
 In this lab, we will explore how to use **ClusterIP** and **NodePort** services in Kubernetes, deploy the **Kubernetes Dashboard** for cluster management, and deploy a multi-tier application with a web interface and database. These are essential skills for managing Kubernetes clusters and applications.
 
@@ -417,4 +417,4 @@ In this lab, you successfully:
 2. Deployed and accessed the **Kubernetes Dashboard**.
 3. Deployed a multi-tier application with a web front-end and database.
 
-You now have the skills to expose applications within a Kubernetes cluster using services and manage your cluster using the Kubernetes Dashboard. Congratulations on completing **Lab 10.1**!
+You now have the skills to expose applications within a Kubernetes cluster using services and manage your cluster using the Kubernetes Dashboard. Congratulations on completing **Lab 8.1**!

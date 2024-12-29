@@ -1,4 +1,4 @@
-# Lab 3.2: Installing Ansible
+# Lab 3.1: Preparation of Lab Environment
 
 In this lab, you will learn how to install and configure **Ansible** on a controller node and set up an inventory to manage other nodes in your network. Ansible is a powerful automation tool that allows you to manage servers and applications at scale using simple YAML configuration files. By the end of this lab, you will have installed Ansible, set up an inventory, and verified communication with your managed nodes.
 
@@ -18,7 +18,6 @@ In this lab, you will learn how to install and configure **Ansible** on a contro
 ## Introduction
 
 In this lab, you will:
-
 1. Install Ansible on a controller node.
 2. Set up the Ansible inventory file to define managed nodes.
 3. Use Ansible to verify that you can communicate with your managed nodes using a simple ping command.
@@ -70,7 +69,7 @@ ansible --version
 
 You should see output that shows the installed version of Ansible, similar to:
 
-```bash
+```
 ansible 2.9.6
 ```
 
@@ -106,7 +105,6 @@ pod-[username]-managed2
 ```
 
 Explanation:
-
 - **pod-[username]-managed1**: This is the first node being managed by Ansible.
 - **[webservers]**: This is a group called "webservers" that includes `pod-[username]-managed2`. You can use groups to organize nodes with similar roles.
 
@@ -161,16 +159,15 @@ If the connection is successful, you will see a **pong** response from each node
 ## Conclusion
 
 In this lab, you learned how to:
-
 1. Install **Ansible** on a controller node.
 2. Set up the Ansible inventory to define managed nodes.
 3. Verify that Ansible can communicate with managed nodes using the `ping` module.
 
 Ansible is a powerful tool for automating system administration tasks, and the ability to communicate with managed nodes is the first step in building more complex automation scripts.
 
-### Example Output for `ansible all -m ping`
+### Example Output for `ansible all -m ping`:
 
-```bash
+```
 pod-[username]-managed1 | SUCCESS => {
     "changed": false,
     "ping": "pong"

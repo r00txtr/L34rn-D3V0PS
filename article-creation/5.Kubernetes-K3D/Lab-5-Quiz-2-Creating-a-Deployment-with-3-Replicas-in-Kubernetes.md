@@ -1,4 +1,4 @@
-# Lab 8.2: Quiz 2 - Creating a Deployment with 3 Replicas in Kubernetes
+# Lab 5: Quiz 2 - Creating a Deployment with 3 Replicas in Kubernetes
 
 In this lab, we will help a user create a **Kubernetes Deployment** for a personal website using the **nginx** image. The user wants to ensure high availability by configuring the deployment with **3 replicas**. This means that Kubernetes will run 3 instances (or pods) of the website to ensure that even if one or more pods fail, the website remains available.
 
@@ -140,4 +140,4 @@ Here’s what you accomplished:
 2. Configured the deployment with **3 replicas** to ensure high availability.
 3. Verified that the deployment and its pods are running correctly.
 
-This simple deployment is a critical first step in understanding how to ensure high availability in Kubernetes. Congratulations on completing **Lab 8.2**!
+This simple deployment is a critical first step in understanding how to ensure high availability in Kubernetes. Congratulations on completing **Lab 5**!

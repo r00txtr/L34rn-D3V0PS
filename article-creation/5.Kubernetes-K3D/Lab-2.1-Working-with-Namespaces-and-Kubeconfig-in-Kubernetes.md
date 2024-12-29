@@ -1,8 +1,9 @@
-# Lab 6.1: Working with Namespaces and Kubeconfig in Kubernetes
+# Lab 2.1: Working with Namespaces and Kubeconfig in Kubernetes
 
 In this lab, we will learn how to manage **Namespaces** and **Kubeconfig** files in Kubernetes. Namespaces allow you to divide cluster resources between multiple users or groups. Kubeconfig files store configuration details used by `kubectl` to interact with Kubernetes clusters.
 
 By the end of this lab, you will:
+
 1. Create and manage namespaces in Kubernetes.
 2. Set up and use different configurations with Kubeconfig.
 3. Apply secrets to securely manage access to your Kubernetes cluster.
@@ -10,6 +11,7 @@ By the end of this lab, you will:
 ---
 
 ## Table of Contents
+
 1. **Introduction to Namespaces and Kubeconfig**
 2. **Step-by-Step Instructions**
     1. Create and Manage Namespaces
@@ -95,6 +97,7 @@ spec:
 ```
 
 Explanation:
+
 - **Pod**: The pod runs an HTTP server (`httpd`) with port 80 exposed.
 - **Service**: The service routes traffic to the `httpd` container in the pod.
 
@@ -288,6 +291,7 @@ kubectl exec -it pod-with-kubeconfig -- bash
 ## Verification
 
 To verify your progress, check that:
+
 1. **Namespaces**: You have successfully created and listed namespaces.
 2. **Pods and Services**: You have created and accessed pods and services in both `ops-namespace` and `academy-namespace`.
 3. **Kubeconfig**: You created a custom Kubeconfig file, stored it as a secret, and accessed it from a running pod.
@@ -297,8 +301,9 @@ To verify your progress, check that:
 ## Conclusion
 
 In this lab, you learned how to:
+
 1. Work with **namespaces** in Kubernetes to organize resources.
 2. Create **pods and services** in different namespaces.
 3. Manage **Kubeconfig** files and securely access them using **secrets**.
 
-This knowledge will help you manage Kubernetes resources more effectively, especially in multi-team or multi-project environments. Congratulations on completing **Lab 6.1**!
+This knowledge will help you manage Kubernetes resources more effectively, especially in multi-team or multi-project environments. Congratulations on completing **Lab 2.1**!

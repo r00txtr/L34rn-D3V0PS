@@ -1,8 +1,9 @@
-# Lab 8.1: Simple Kubernetes Deployment, Scaling, Editing, Updating & Rolling Back Deployments
+# Lab 4.1: Simple Kubernetes Deployment, Scaling, Editing, Updating & Rolling Back Deployments
 
 In this lab, we will cover the essentials of working with **Kubernetes Deployments**, which manage the desired state of application workloads. Deployments handle updates, scaling, and provide the ability to roll back to previous versions in case of failure.
 
 By the end of this lab, you will:
+
 1. Create a simple deployment.
 2. Scale and edit a deployment.
 3. Update a deployment and manage rollbacks.
@@ -12,6 +13,7 @@ This guide is designed for beginners, with examples and easy-to-follow instructi
 ---
 
 ## Table of Contents
+
 1. **Introduction to Kubernetes Deployments**
 2. **Step-by-Step Instructions**
     1. Create a Simple Deployment
@@ -68,6 +70,7 @@ spec:
 ```
 
 Explanation:
+
 - **replicas**: Specifies the number of pod replicas (1 in this case).
 - **nginx:latest**: The container image used by the deployment.
 
@@ -104,7 +107,10 @@ Next, we will scale the deployment to increase the number of replicas.
 Alternatively, you can generate a deployment configuration using `kubectl` and output the YAML:
 
 ```bash
-kubectl create deployment simple-nginx --image=nginx:1.20.2 --dry-run=client --output=yaml > simple-deploy.yaml
+kubectl create deployment simple-nginx --image=nginx:1.20.2 --replicas=1 --dry-run=client --output=yaml > simple-nginx.yaml
+```
+
+```bash
 kubectl create -f simple-deploy.yaml
 ```
 
@@ -265,6 +271,7 @@ kubectl describe deployment update-nginx | grep Image:
 ## Verification
 
 To ensure the lab was completed successfully:
+
 1. **Simple Deployment**: You should have created a deployment and verified that the pods are running.
 2. **Scaling**: You should have scaled the deployment to 3 replicas.
 3. **Editing**: The image in the deployment should be updated to `nginx:1.22.0-alpine`.
@@ -275,8 +282,9 @@ To ensure the lab was completed successfully:
 ## Conclusion
 
 In this lab, you learned how to:
+
 1. Create and manage a **Kubernetes Deployment**.
 2. Scale and edit a deployment in real-time.
 3. Update a deployment with a new image and manage rollbacks using **Kubernetes Deployment History**.
 
-Understanding Kubernetes Deployments is essential for managing application workloads, handling updates, and ensuring high availability. Congratulations on completing **Lab 8.1**! You’re now ready to use Kubernetes Deployments in real-world applications.
+Understanding Kubernetes Deployments is essential for managing application workloads, handling updates, and ensuring high availability. Congratulations on completing **Lab 4.1**! You’re now ready to use Kubernetes Deployments in real-world applications.

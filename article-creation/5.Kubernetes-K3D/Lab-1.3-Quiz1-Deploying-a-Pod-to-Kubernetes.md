@@ -2,7 +2,7 @@
 
 In this lab, you will deploy a pod to a Kubernetes cluster. The task is to create a pod with specific parameters, deploy it to a specified node, and verify its correct deployment.
 
-### Pod Specifications:
+### Pod Specifications
 
 - **Pod Name**: `nginx-kuis1`
 - **Container Name**: `nginx-container`
@@ -81,6 +81,7 @@ This command provides details such as the pod’s labels, node, container image,
 ## Conclusion
 
 In this lab, you have successfully created and deployed a pod to a specific node in the Kubernetes cluster. The pod was created using the following specifications:
+
 - Pod Name: `nginx-kuis1`
 - Container Name: `nginx-container`
 - Image: `nginx:1.25`

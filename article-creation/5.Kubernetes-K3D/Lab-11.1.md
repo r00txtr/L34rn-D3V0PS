@@ -1,7 +1,3 @@
-Here’s the revised **Lab 11.2** for deploying a Laravel application using **K3s**:
-
----
-
 # Lab 11.2: Deploy Laravel with K3s
 
 In this lab, you will deploy a Laravel application on a **K3s** cluster. You will create a custom Docker image for the Laravel app, set up a **MySQL** database, and deploy both on a K3s cluster using **Kubernetes manifests**.
@@ -117,20 +113,33 @@ In this lab, you will deploy a Laravel application in a K3s Kubernetes cluster. 
     echo "Waiting for MySQL to be ready..."
     sleep 10
 
+    # Wait for MySQL to be ready
     until nc -z -v -w30 db 3306; do
        echo "Waiting for database connection..."
        sleep 5
     done
     echo "MySQL is up - executing command."
 
-    # Run composer update and Laravel setup
-    composer update
+    # Copy .env.example to .env if it doesn't exist
+    if [ ! -f .env ]; then
+        cp .env.example .env
+    fi
+
+    # Generate APP_KEY in .env
     php artisan key:generate
+
+    # Update database configuration in .env
+    sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=mysql/g' .env
+    sed -i 's/DB_HOST=.*/DB_HOST=db/g' .env
+    sed -i 's/DB_DATABASE=.*/DB_DATABASE=perpusku_gc/g' .env
+    sed -i 's/DB_USERNAME=.*/DB_USERNAME=admin/g' .env
+    sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=admin/g' .env
+
+    # Run database migrations and seeding
     php artisan migrate --force
     php artisan db:seed --force
 
-    # Start Laravel application
-    php-fpm
+    # Start PHP-FPM and Laravel server  
     php artisan serve --host=0.0.0.0 --port=8000
     ```
 

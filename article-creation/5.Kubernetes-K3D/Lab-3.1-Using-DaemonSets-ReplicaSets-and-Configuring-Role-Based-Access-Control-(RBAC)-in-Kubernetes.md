@@ -1,14 +1,16 @@
-# Lab 7.1: Using DaemonSets, ReplicaSets, and Configuring Role-Based Access Control (RBAC) in Kubernetes
+# Lab 3.1: Using DaemonSets, ReplicaSets, and Configuring Role-Based Access Control (RBAC) in Kubernetes
 
 In this lab, we will explore **DaemonSets** and **ReplicaSets**, two critical Kubernetes controllers for managing workloads, and we’ll also configure **Role-Based Access Control (RBAC)** to manage permissions in the cluster. This lab provides a step-by-step guide to help you understand and apply these concepts.
 
 By the end of this lab, you will:
+
 1. Create and manage DaemonSets and ReplicaSets.
 2. Configure access control using RBAC in Kubernetes.
 
 ---
 
 ## Table of Contents
+
 1. **Introduction to DaemonSets, ReplicaSets, and RBAC**
 2. **Step-by-Step Instructions**
     1. Creating a DaemonSet
@@ -22,12 +24,15 @@ By the end of this lab, you will:
 ## Introduction to DaemonSets, ReplicaSets, and RBAC
 
 ### What is a DaemonSet?
+
 A **DaemonSet** ensures that a copy of a specific pod runs on all (or selected) nodes in the Kubernetes cluster. They are typically used for deploying system-level workloads, such as monitoring agents or logging services, across all nodes.
 
 ### What is a ReplicaSet?
+
 A **ReplicaSet** ensures that a specified number of pod replicas are running at any given time. It’s useful for maintaining the desired state of an application, providing high availability, and ensuring that if one pod fails, another is started automatically.
 
 ### What is Role-Based Access Control (RBAC)?
+
 **RBAC** allows you to control who can access and perform actions on Kubernetes resources. By using **Roles**, **ClusterRoles**, and **RoleBindings**, you can define specific permissions for users or service accounts.
 
 ---
@@ -75,6 +80,7 @@ spec:
 ```
 
 Explanation:
+
 - **DaemonSet**: Ensures that each node runs an **nginx** container.
 - **Resources**: We’ve set memory limits and requests for the container to 200Mi.
 
@@ -145,6 +151,7 @@ spec:
 ```
 
 Explanation:
+
 - **ReplicaSet**: Ensures three replicas of the **httpd** container are running.
 - **replicas**: We specify `3` replicas.
 - **httpd:2.2.34**: The container image for Apache HTTP server.
@@ -272,6 +279,7 @@ kubectl auth can-i delete daemonset --as system:serviceaccount:default:lab7-user
 ## Verification
 
 To ensure the lab was completed successfully, verify the following:
+
 1. **DaemonSets**: The `nginx-ds` DaemonSet is running on all nodes.
 2. **ReplicaSets**: The `httpd-rs` ReplicaSet is running three replicas of the `httpd` container.
 3. **RBAC**: The `lab7-user` service account can create and manage deployments, ReplicaSets, and DaemonSets.
@@ -281,8 +289,9 @@ To ensure the lab was completed successfully, verify the following:
 ## Conclusion
 
 In this lab, you learned how to:
+
 1. Create and manage **DaemonSets** to run system-level workloads across all nodes.
 2. Use **ReplicaSets** to maintain a specific number of pod replicas.
 3. Configure **RBAC** in Kubernetes, giving specific permissions to users or service accounts.
 
-By understanding DaemonSets, ReplicaSets, and RBAC, you can effectively manage workloads and control access in a Kubernetes cluster. Congratulations on completing **Lab 7.1**!
+By understanding DaemonSets, ReplicaSets, and RBAC, you can effectively manage workloads and control access in a Kubernetes cluster. Congratulations on completing **Lab 3.1**!
